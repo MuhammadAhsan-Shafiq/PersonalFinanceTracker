@@ -16,7 +16,10 @@ struct Transaction: Identifiable {
     var type: TransactionType
 }
 
-enum TransactionType {
-    case income
-    case expense
+enum TransactionType: String, CaseIterable, Identifiable {
+    case all = "All"
+    case income = "Income"
+    case expense = "Expence"
+    
+    var id: String { self.rawValue }
 }
