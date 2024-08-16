@@ -14,6 +14,7 @@
 		527F77202C6F75DE00C28E8A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F771F2C6F75DE00C28E8A /* Transaction.swift */; };
 		527F77222C6F76ED00C28E8A /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F77212C6F76ED00C28E8A /* TransactionViewModel.swift */; };
 		527F77242C6F77A400C28E8A /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F77232C6F77A400C28E8A /* TransactionListView.swift */; };
+		527F77262C6F8C4000C28E8A /* AddTransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527F77252C6F8C4000C28E8A /* AddTransactionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		527F771F2C6F75DE00C28E8A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		527F77212C6F76ED00C28E8A /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		527F77232C6F77A400C28E8A /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		527F77252C6F8C4000C28E8A /* AddTransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				527F77232C6F77A400C28E8A /* TransactionListView.swift */,
+				527F77252C6F8C4000C28E8A /* AddTransactionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				527F77202C6F75DE00C28E8A /* Transaction.swift in Sources */,
 				527F77102C6F74DB00C28E8A /* ContentView.swift in Sources */,
 				527F77242C6F77A400C28E8A /* TransactionListView.swift in Sources */,
+				527F77262C6F8C4000C28E8A /* AddTransactionView.swift in Sources */,
 				527F770E2C6F74DB00C28E8A /* PersonalFinanceTrackerApp.swift in Sources */,
 				527F77222C6F76ED00C28E8A /* TransactionViewModel.swift in Sources */,
 			);
