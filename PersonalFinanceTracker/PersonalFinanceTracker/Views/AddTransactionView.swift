@@ -11,19 +11,42 @@ struct AddTransactionView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: TransactionViewModel
     
-    @State private var title: String = ""
-    @State private var amount: String = ""
-    @State private var category: String = ""
-    @State private var date: Date = Date()
-    @State private var type: TransactionType = .expense
+    @State private var title: String
+    @State private var amount: String
+    @State private var category: String
+    @State private var date: Date
+    @State private var type: TransactionType
     
+    
+    init(viewModel: TransactionViewModel) {
+        self.viewModel = viewModel
+        if let transaction = viewModel.selectedTransaction {
+            _title = State(initialValue: String(transaction.title))
+            _amount = State(initialValue: String(transaction.amount))
+            _category = State(initialValue: transaction.category)
+            _date = State(initialValue: transaction.date)
+            _type = State(initialValue: transaction.type)
+        } else {
+            _title = State(initialValue: "")
+            _amount = State(initialValue: "")
+            _category = State(initialValue: "")
+            _date = State(initialValue: Date())
+            _type = State(initialValue: .income)
+        }
+    }
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Details")) {
+                Section(header: Text("Title")) {
                     TextField("Title", text: $title)
+                        .keyboardType(.decimalPad)
+                }
+
+                Section(header: Text("Amount")) {
                     TextField("Amount", text: $amount)
                         .keyboardType(.decimalPad)
+                }
+                Section(header: Text("Categor")){
                     TextField("Category", text: $category)
                 }
                 
@@ -39,7 +62,7 @@ struct AddTransactionView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
             }
-            .navigationTitle("Add Transaction")
+            .navigationBarTitle(viewModel.selectedTransaction == nil ? "Add Transaction" : "Edit Transaction", displayMode: .inline)
             .navigationBarItems(leading: Button("Cancel"){
                 presentationMode.wrappedValue.dismiss()
             },trailing: Button("Save"){
@@ -49,11 +72,15 @@ struct AddTransactionView: View {
         }
     }
     private func saveTransaction(){
-        guard let amount = Double(amount) else { return }
-        let newTransaction = Transaction(title: title, amount: amount, category: category, date: date, type: type)
-        viewModel.transactions.append(newTransaction)
-        }
+      guard let amount = Double(amount), !category.isEmpty else { return }
+        
+        let transaction = Transaction(id: viewModel.selectedTransaction?.id ?? UUID(), title: title, amount: amount, category: category, date: date, type: type)
+        viewModel.addTransaction(transaction)
+        viewModel.resetSelectedTransaction()
+
+        presentationMode.wrappedValue.dismiss()
     }
+}
 
 
 #Preview {
